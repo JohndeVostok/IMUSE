@@ -1,0 +1,354 @@
+<html>
+<head>
+	<title>Apply</title>
+	<style>
+		.title{
+			font-size:xx-large;
+			text-align:center;
+			font-weight:bold;
+		}
+		.entire{
+			margin-left:25%;
+			margin-right:20%;
+		}
+		table.info{
+			font-size:x-large;
+			width:100%;
+			text-align:left;
+			line-height:30px;
+		}
+		table.box{
+			font-size:medium;
+			width:100%;
+			text-align:left;
+			line-height:30px;
+		}
+		table.tableclass{
+			width:100%;
+			background:#303030;
+		}
+		a.logout
+		{
+			color: white;
+			text-decoration: none;
+		}
+		.blank{
+			height:50px;
+			width:100%;
+		}
+		.personal_information{
+			width:100%;
+			text-align:left;
+			border-top:1px dashed #303030;
+			border-bottom:1px dashed #303030;
+			border-left:1px dashed #303030;
+			border-right:1px dashed #303030;
+			font-size:x-large;
+		}
+		.personal_information::before{
+			content:attr(title);
+			position:absolute;
+			left:31%;
+			transform:translateX(-50%);
+			-webkit-transform:translate(-50%,-50%);
+			padding:0 10px;
+			background-color:#303030;
+			font-size:small;
+			color:#FFFFFF;
+		}
+		.edu{
+			width:100%;
+			text-align:left;
+			border-top:1px dashed #303030;
+			border-bottom:1px dashed #303030;
+			border-left:1px dashed #303030;
+			border-right:1px dashed #303030;
+			font-size:x-large;
+		}
+		.edu::before{
+			content:attr(title);
+			position:absolute;
+			left:32%;
+			transform:translateX(-50%);
+			-webkit-transform:translate(-50%,-50%);
+			padding:0 10px;
+			background-color:#303030;
+			font-size:small;
+			color:#FFFFFF;
+		}
+		.soc{
+			width:100%;
+			text-align:left;
+			border-top:1px dashed #303030;
+			border-bottom:1px dashed #303030;
+			border-left:1px dashed #303030;
+			border-right:1px dashed #303030;
+			font-size:x-large;
+		}
+		.soc::before{
+			content:attr(title);
+			position:absolute;
+			left:33%;
+			transform:translateX(-50%);
+			-webkit-transform:translate(-50%,-50%);
+			padding:0 10px;
+			background-color:#303030;
+			font-size:small;
+			color:#FFFFFF;
+		}
+		.small_blank{
+			height:10px;
+			width:100%;
+		}
+		.line_div{
+			border:1px dashed #303030;
+			font-size:medium;
+			text-align:left;
+			width:100%;
+			line-height:30px;
+		}
+		.part{
+			font-size:xx-large;
+			text-align:left;
+			width:100%;
+			font-weight:bold;
+		}
+		.zhengwen2{
+			font-size:medium;
+			text-align:left;
+			line-height:30px;
+		}
+		.red_content{
+			font-size:medium;
+			text-align:left;
+			color:#DC143C;
+			line-height:30px;
+		}
+		.bolder{
+			font-size:large;
+			text-align:left;
+			font-weight:bold;
+		}
+		.xiahuaxian{
+			height:2px;
+			width:100%;
+			background:#DC143C;
+			text-align:center;
+			overflow:hidden;
+		}
+		.copyright{
+			height:25px;
+			width:100%;
+			background:#E3E3E3;
+			text-align:center;
+			font-size:large;
+			overflow:hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<table border = "0px" cellspacing = "0px" class = "tableclass">
+	<tr><td><img src = "./logo.jpg"  width = "600" height = "100"></td>
+	<td>
+	<a href = "{%url 'user_page' %}" class = "logout">Back</a>
+	</td>
+	<td>
+	<a href = "{%url 'logout_page' %}" class = "logout">	
+		Logout
+    </a>
+    </td></tr>
+    </table>
+    <div class = "blank"></div>
+    <div class = "title">
+		Apply for IMUSE<br>
+    </div>
+    <div class = "entire">
+	<form method = 'post' enctype="multipart/form-data">
+		{% csrf_token %}
+		<tr>{{form.non_field_errors}}</tr>
+		<div class = "part">
+		Part I. Personal Information<br>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "personal_information" title = "Personal Details">
+			<div class = "small_blank"></div>
+		<table class = "info">
+			<tr><td>Name:</td><td>{{form.name}}</td></tr>
+<!--    下面是新添加的两行物理地址中的一个，把其中一行title改成拼音            -->
+			<tr><td>Pin Yin:</td><td>{{form.pinyin}}</td></tr>
+			<tr><td>Gender:</td><td>{{form.gender}}</td></tr>
+			<tr><td>Ethnic Group:</td><td>{{form.group}}</td></tr>
+			<tr><td><div class = "zhengwen2">(eg.: Han)</div></td></tr>
+			<tr><td>Places Lived:</td><td>{{form.place}}</td></tr>
+			<tr><td>Mobile Number:</td><td>{{form.mobile}}</td></tr>
+<!--    原本的物理地址行改成国籍信息                                      -->
+			<tr><td>Nationality</td><td>{{form.nation}}</td></tr>
+<!--    下面是新添加的两行物理地址中的一个，把其中一行title改成微信号          -->
+			<tr><td>Wechat:</td><td>{{form.wechat}}</td></tr>
+		</table>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+		<div class = "personal_information" title = "Education Details">
+			<div class = "small_blank"></div>
+		<table class = "info">
+			<tr><td>University:</td><td>{{form.university}}</td></tr>
+			<tr><td>Study Year:</td><td>{{form.study_year}}</td></tr>
+			<tr><td>Major:</td><td>{{form.study_field}}</td></tr>
+<!--        要删去GPA这一项条目                                         -->
+       <!--	<tr><td>GPA:</td><td>{{form.gpa}}</td></tr>        -->
+		</table>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+			<div class = "edu" title = "Education Background">
+			<div class = "small_blank"></div>
+		<table class = "info">
+			<tr><td>Education Background:</td></tr>
+			<tr><td><div class = "zhengwen2">(Please start from your high school)</div></td></tr>
+			<tr><td>{{form.education}}</td></tr>
+			</table>
+			</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+			<div class = "edu" title = "Employment/Internship">
+			<div class = "small_blank"></div>
+			<table class = "info">
+			<tr><td>Employment / Internship:</td></tr>
+			<tr><td>{{form.employment}}</td></tr>
+			</table>
+			</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+			<div class = "soc" title = "Association/Social Activiity">
+			<div class = "small_blank"></div>
+			</table class = "info">
+			<tr><td>Association / Social Activity:</td></tr>
+			<tr><td><div class = "zhengwen2">(If applicatable, including student associations, overseas experiences, and all other activities which you think should be taken consideration)</div></td></tr>
+			<tr><td>{{form.association}}</td></tr>
+			</table>
+			</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+			<div class = "personal_information" title = "Language Efficiency">
+			<div class = "small_blank"></div>
+			</table class = "info">
+			<tr><td>Language Efficiency:</td></tr>
+			<tr><td><div class = "zhengwen2">(eg.:CET4 650,TOEFL 100)</div></td></tr>
+			<tr><td>{{form.performance}}</td></tr>
+			</table>
+			</div>
+		<div class = "small_blank"></div>
+		<div class = "xiahuaxian"></div>
+		<div class = "blank"></div>
+		<div class = "part">
+			Part II. Essay<br>
+			</div>
+		<div class = "zhengwen2">
+			Several question presented in this part are for you to extend your critical thinking and creativity. There is no restriction on your answers and we do expect prototypes. You may take this opportunity to tell us why you are unique and what makes you stand out from other IMUSE 2015 applicants.<br>
+			Note to all applicants:<br>
+		</div>
+		<div class = "red_content">
+			Plagiarism will not be tolerated. If any evidence is found of dishonesty, the applicant will be disqualified from this year’s and all future IMUSE programs.
+		</div>
+		<div class = "bolder">
+			Questions<br>
+		</div>
+		<div class = "zhengwen2">
+		From your own perspective, please list AT LEAST three heated social issues in the world which are worth college students’attention, and write down your understanding and thoughts for them.
+		</div>
+		<div class = "red_content">
+			（请您在写完以后复制到本地文件保存，以防止申请失败时 丢失文档）<br>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+		<div class = "personal_information" title = "Your Answer">
+		<div class = "small_blank"></div>
+		<table class = "info">
+			<tr><td>{{form.essay}}</td></tr>
+			</table>
+			</div>
+		<div class = "small_blank"></div>
+		<div class = "xiahuaxian"></div>
+		<div class = "blank"></div>
+		<div class = "part">
+			Part III. Curriculum Vitae & Supporting Materials
+		</div>
+		<div class = "line_div">
+			<table class = "box">
+				<tr><td>Please upload your CV as additional material.(Both Chinese and English are OK)</td></tr>
+				<tr><td>
+<!--            新增html传输文件函数                           -->
+				<form name="uploadForm" method="POST" 
+				enctype="multipart/form-data" 
+				action="/ProcessServer/FileOperate/fileUpServlet"> 
+					CV:<input type="file" name="file1" size="30"/> 
+				<input type="submit" name="submit" value="上传文件"> 
+				<input type="reset" name="reset" value="删除文件"> 
+				</form>
+				</td></tr>
+<!--            我注释掉了原来写简历的框子，加上了html的传输文件函数        -->
+<!--				<tr><td>{{form.cv}}</td></tr>                 -->
+			</table>
+		</div>
+		<div class = "small_blank"></div>
+<!--		<div class = "xiahuaxian"></div>
+		<div class = "blank"></div>
+		<div class = "part">
+			Part IV. Personal Statement
+		</div>
+		<div class = "line_div">
+			<table class = "box">
+				<tr><td>Also we are open to personal statement in any forms, mainly elaborating your adequacy and wishes to IMUSE 2015. (Both Chinese and English are ok)</td></tr>
+				<tr><td>
+			
+			<tr><td>{{form.statement}}</td></tr>        
+			</table>
+		</div>
+		<div class = "small_blank"></div>  -->
+		<div class = "xiahuaxian"></div>
+		<div class = "blank"></div>
+		<div class = "part">
+			Scholarship机制
+		</div>
+		<div class = "line_div">
+			<table class = "box">
+				<tr><td>A为促进代表多样性，我们将为参加会期的中方优秀代表提供一定经济支持，奖励金额覆盖会期全部住宿费及部分赴北京的交通费</td></tr>
+				<tr><td>请在申请信息中说明是否希望申请Scholarship政策。</td></tr>
+<!--         将下面这个对话框改成是或否选项                         -->
+			<tr><td>{{form.scholarship}}</td></tr>
+			</table>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "xiahuaxian"></div>
+		<div class = "blank"></div>
+		<div class = "part">
+			SIGNATRUE
+		</div>
+		<div class = "line_div">
+			<table class = "box">
+				<tr><td>I affirm that the above information that I have provided in this application is a correct and accurate reflection of my academic and scholastic accomplishments. I have filled out this application as honestly as possible. I understand that if I am found to have reported false information, I will be disqualified from attending IMUSE and any related activities in the future.</td></tr>
+				<td><tr>I also promise that I will fully participate in the whole IMUSE 2015 program.</td></tr>
+				<tr><td>Signature:</td><td>{{form.signature}}</td></tr>
+				<tr><td>Date:</td><td>{{form.date}}</td></tr>
+			</table>
+		</div>
+		<div class = "small_blank"></div>
+		<div class = "xiahuaxian"></div>
+		<div class = "small_blank"></div>
+		<div class = "small_blank"></div>
+		<div align = "center">
+			<input type="submit" value = "Submit" />
+			
+		</div>
+
+	</form>
+	<div class = "blank"></div>
+	</div>
+	<div class = "copyright">
+	Copyright ©<font color = #DC143C> IMUSE FOUNDATION 2014</font>
+	</div>
+</body>
+
+</html>
